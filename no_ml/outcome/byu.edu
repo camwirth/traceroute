@@ -1,0 +1,249 @@
+Information for byu.edu
+
+--------------------------------------------------------
+Testing 66.219.235.31
+
+---Latency---
+Positives: 1000
+Negatives: 0
+
+---Time To Live---
+Positives: 0
+Negatives: 1000
+
+---Delay---
+Positives: 987
+Negatives: 13
+
+---Traceroute---
+Positives: 1000
+Negatives: 0
+
+--------------------------------------------------------
+Testing 66.219.235.215
+
+---Latency---
+Positives: 1000
+Negatives: 0
+
+---Time To Live---
+Positives: 0
+Negatives: 1000
+
+---Delay---
+Positives: 986
+Negatives: 14
+
+---Traceroute---
+Positives: 1000
+Negatives: 0
+
+--------------------------------------------------------
+Testing 66.219.236.117
+
+---Latency---
+Positives: 1000
+Negatives: 0
+
+---Time To Live---
+Positives: 0
+Negatives: 1000
+
+---Delay---
+Positives: 990
+Negatives: 10
+
+---Traceroute---
+Positives: 1000
+Negatives: 0
+
+--------------------------------------------------------
+Testing 69.73.60.141
+
+---Latency---
+Positives: 0
+Negatives: 1000
+
+---Time To Live---
+Positives: 0
+Negatives: 1000
+
+---Delay---
+Positives: 1
+Negatives: 999
+
+---Traceroute---
+Positives: 0
+Negatives: 1000
+
+--------------------------------------------------------
+Testing 72.160.10.9
+
+---Latency---
+Positives: 0
+Negatives: 1000
+
+---Time To Live---
+Positives: 0
+Negatives: 1000
+
+---Delay---
+Positives: 378
+Negatives: 622
+
+---Traceroute---
+Positives: 0
+Negatives: 1000
+
+--------------------------------------------------------
+Testing 75.174.31.107
+
+---Latency---
+Positives: 840
+Negatives: 160
+
+---Time To Live---
+Positives: 0
+Negatives: 1000
+
+---Delay---
+Positives: 28
+Negatives: 972
+
+---Traceroute---
+Positives: 0
+Negatives: 1000
+
+--------------------------------------------------------
+Testing 76.8.213.221
+
+---Latency---
+Positives: 0
+Negatives: 1000
+
+---Time To Live---
+Positives: 0
+Negatives: 1000
+
+---Delay---
+Positives: 993
+Negatives: 7
+
+---Traceroute---
+Positives: 1000
+Negatives: 0
+
+--------------------------------------------------------
+Testing 76.8.213.231
+
+---Latency---
+Positives: 0
+Negatives: 1000
+
+---Time To Live---
+Positives: 0
+Negatives: 1000
+
+---Delay---
+Positives: 981
+Negatives: 19
+
+---Traceroute---
+Positives: 1000
+Negatives: 0
+
+--------------------------------------------------------
+Testing 97.117.140.93
+
+---Latency---
+Positives: 979
+Negatives: 21
+
+---Time To Live---
+Positives: 0
+Negatives: 1000
+
+---Delay---
+Positives: 1
+Negatives: 999
+
+---Traceroute---
+Positives: 0
+Negatives: 1000
+
+--------------------------------------------------------
+Testing 136.36.62.167
+
+---Latency---
+Positives: 28
+Negatives: 972
+
+---Time To Live---
+Positives: 0
+Negatives: 1000
+
+---Delay---
+Positives: 0
+Negatives: 1000
+
+---Traceroute---
+Positives: 0
+Negatives: 1000
+
+--------------------------------------------------------
+Testing 136.36.203.65
+
+---Latency---
+Positives: 0
+Negatives: 1000
+
+---Time To Live---
+Positives: 0
+Negatives: 1000
+
+---Delay---
+Positives: 0
+Negatives: 1000
+
+---Traceroute---
+Positives: 0
+Negatives: 1000
+
+--------------------------------------------------------
+Testing 174.52.180.239
+
+---Latency---
+Positives: 0
+Negatives: 1000
+
+---Time To Live---
+Positives: 0
+Negatives: 1000
+
+---Delay---
+Positives: 7
+Negatives: 993
+
+---Traceroute---
+Positives: 0
+Negatives: 1000
+
+--------------------------------------------------------
+Testing byu.edu
+
+---Latency---
+Positives: 941
+Negatives: 59
+
+---Time To Live---
+Positives: 999
+Negatives: 1
+
+---Delay---
+Positives: 886
+Negatives: 114
+
+---Traceroute---
+Positives: 1000
+Negatives: 0
+

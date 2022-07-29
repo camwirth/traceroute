@@ -47,22 +47,6 @@ for i in range(len(data)):
     print(df)
     print('--------')
 
-    # print(traceroute)
-    # for index in traceroute:
-    #     print(index)
-    #     for i in range(len(traces)):
-    #         print(index[i])
-    #         if index[i] not in traces[i].values:
-    #             print('success')
-    #             df = pd.DataFrame({'IP': index[i], 'Count': 1})
-    #             traces = pd.concat([traces[i], df])
-    #             print(traces)
-    #         else:
-    #             index = traces[i].loc[traces[i] == trace[i]]
-    #             traces[i].loc[[index, 'IP']] += 1
-    
-    # for i in traces:
-    #     print(i)
 
     
 

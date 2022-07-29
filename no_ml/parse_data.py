@@ -36,6 +36,8 @@ def parse_files(name):
     df['Latency'] = latency_lst
     df['Delay'] = delay_lst
 
+    # df.to_csv('./parsed_data/' + name + '.csv')
+
     return df
 
 def parse_traceroute(traceroute):
@@ -56,7 +58,7 @@ def parse_traceroute(traceroute):
                 return 'ERROR'
             else:
                 single_ip.append(int(i))
-        five_ips.append(single_ip)
+        five_ips.append(single_ip[0:3])
 
     return five_ips
 

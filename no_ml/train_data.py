@@ -1,6 +1,7 @@
-from parse_data import parse_files
 from statistics import stdev
-from statistics import mean
+from statistics import mean, median
+import pandas as pd
+import time
 
 ips = [
     "66.219.235.31",
@@ -18,13 +19,30 @@ ips = [
     "byu.edu",
 ]
 
-data = [parse_files(ip) for ip in ips]
+# data = [parse_files(ip) for ip in ips]
+
+def train_data(data):
+    training_data_df = pd.DataFrame()
+    for i in range(len(data)):
+        min_latency, max_latency = train_latency(data[i]['Latency'].loc[len(data[i]['Latency'])-2000:len(data[i]['Latency']) - 1000])
+        min_ttl, max_ttl = train_ttl(data[i]['TTL'].loc[len(data[i]['TTL'])- 2000:len(data[i]['TTL']) - 1000])
+        min_delay, max_delay = train_delay(data[i]['Delay'].loc[len(data[i]['Delay']) - 2000:len(data[i]['Delay']) - 1000])
+        traceroutes = train_traceroute(data[i]['Traceroute'].loc[len(data[i]['Delay']) - 2000:len(data[i]['Traceroute']) - 1000])
+        train_df = pd.DataFrame({
+            'IP': ips[i], 'Min-Latency': min_latency, 'Max-Latency': max_latency,
+            'Min-ttl': min_ttl, 'Max-ttl': max_ttl, 'Min-delay': min_delay, 
+            'Max-delay': max_delay, 'Traceroutes': traceroutes
+        })
+        training_data_df = pd.concat([training_data_df, train_df], ignore_index=True)
+    training_data_df.to_csv('./parsed_data/training_data.csv')
+    return training_data_df
+
 
 def train_latency(latencies):
     latency_stdev = stdev(latencies)
     latency_mean = mean(latencies)
-    min_threshold = latency_mean - latency_stdev
-    max_threshold = latency_mean + latency_stdev
+    min_threshold = latency_mean - 2*latency_stdev
+    max_threshold = latency_mean + 2*latency_stdev
     return min_threshold, max_threshold
 
 def train_ttl(ttl):
@@ -44,7 +62,9 @@ def train_delay(delays):
     max_threshold = delay_mean + delay_stdev
     return min_threshold, max_threshold
 
-# def train_traceroute(traceroute):
-
-
-
+def train_traceroute(traceroute):
+    traceroute_lst = []
+    for trace in traceroute:
+        if trace not in traceroute_lst:
+            traceroute_lst.append(trace)
+    return traceroute_lst
