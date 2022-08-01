@@ -20,6 +20,22 @@ ips = [
 ]
 
 # data = [parse_files(ip) for ip in ips]
+def train(data):
+    training_data_df = pd.DataFrame()
+    # for i in range(len(data)):
+    min_latency, max_latency = train_latency(data['Latency'])
+    min_ttl, max_ttl = train_ttl(data['TTL'])
+    min_delay, max_delay = train_delay(data['Delay'])
+    traceroutes = train_traceroute(data['Traceroute'])
+        # print(data['IP'])
+    train_df = pd.DataFrame({
+            'Min-Latency': min_latency, 'Max-Latency': max_latency,
+            'Min-ttl': min_ttl, 'Max-ttl': max_ttl, 'Min-delay': min_delay, 
+            'Max-delay': max_delay, 'Traceroutes': traceroutes
+        })
+    training_data_df = pd.concat([training_data_df, train_df], ignore_index=True)
+    # training_data_df.to_csv('./parsed_data/training_data.csv')
+    return training_data_df
 
 def train_data(data):
     training_data_df = pd.DataFrame()
@@ -34,7 +50,7 @@ def train_data(data):
             'Max-delay': max_delay, 'Traceroutes': traceroutes
         })
         training_data_df = pd.concat([training_data_df, train_df], ignore_index=True)
-    training_data_df.to_csv('./parsed_data/training_data.csv')
+    # training_data_df.to_csv('./parsed_data/training_data.csv')
     return training_data_df
 
 
