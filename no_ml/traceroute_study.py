@@ -26,25 +26,46 @@ for i in range(len(data)):
     data[i].drop(data[i].index[100:], inplace=True)
 
     traceroute = data[i]['Traceroute']
-    traces = []
-    for i in range(5):
-        traces.append(pd.DataFrame())
-        traces[i]['IP'] = []
-        traces[i]['Count'] = []
+    valid_routes = []
+    for idx, name in enumerate(traceroute.value_counts().index.tolist()):
+        if traceroute.value_counts()[idx]/len(traceroute) > 0.4:
+            valid_routes.append(name)
+    print(valid_routes)
+        # print('Name: ', name)
+        # print(type(name))
+        # print('Counts: ', traceroute.value_counts()[idx])
+    # count = data[i]['Traceroute'].value_counts().index.to_list()
+    # print(count)
+    # print(type(count))
+    # print(count.loc[])
+
+    # traces = []
+    # for i in range(5):
+    #     traces.append(pd.DataFrame())
+    #     traces[i]['IP'] = []
+    #     traces[i]['Count'] = []
 
 
-    traceroute_lst = []
-    count = []
+    # traceroute_lst = []
+    # count = []
+    # total = 0
 
-    for trace in traceroute:
-        if trace not in traceroute_lst:
-            traceroute_lst.append(trace)
-            count.append(1)
-        else:
-            i = traceroute_lst.index(trace)
-            count[i] += 1
-    df = pd.DataFrame({'traceroute': traceroute_lst, 'count': count})
-    print(df)
+    # for trace in traceroute:
+    #     if trace not in traceroute_lst:
+    #         traceroute_lst.append(trace)
+    #         count.append(1)
+    #     else:
+    #         i = traceroute_lst.index(trace)
+    #         count[i] += 1
+        
+    # for i in range(len(count)):
+    #     print(count[i]/len(traceroute))
+    #     if count[i]/len(traceroute) > 0.4:
+    #         traceroute.pop(i)
+    #         count.pop(i)
+            
+    # df = pd.DataFrame({'traceroute': traceroute_lst, 'count': count})
+    # print(df)
     print('--------')
 
 

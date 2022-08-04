@@ -76,40 +76,6 @@ def test_traceroute(traceroute_test_data, common_traceroutes):
         traceroute_results.append(passed)
     return traceroute_results
 
-def test(trained_data_df, test_data_df):
-    # ip_trained = trained_data_df.loc[trained_data_df['IP'] == ip[0]]
-    min_latency = trained_data_df['Min-Latency'].tolist()[0]
-    max_latency = trained_data_df['Max-Latency'].tolist()[0]
-    min_ttl = trained_data_df['Min-ttl'].tolist()[0]
-    max_ttl = trained_data_df['Max-ttl'].tolist()[0]
-    min_delay = trained_data_df['Min-delay'].tolist()[0]
-    max_delay = trained_data_df['Max-delay'].tolist()[0]
-    common_traceroutes = trained_data_df['Traceroutes'].tolist()
-
-    latency_results = test_latency(test_data_df['Latency'].tolist(), min_latency, max_latency)
-    ttl_results = test_ttl(test_data_df['TTL'].tolist(), min_ttl, max_ttl)
-    delay_results = test_delay(test_data_df['Delay'].tolist(), min_delay, max_delay)
-    traceroute_results = test_traceroute(test_data_df['Traceroute'].tolist(), common_traceroutes)
-
-    steady = is_steady(latency_results, ttl_results, delay_results, traceroute_results)
-
-    return steady
-
-def is_steady(latency_results, ttl_results, delay_results, traceroute_results):
-    true_latency, false_latency = return_results(latency_results)
-    true_ttl, false_ttl = return_results(ttl_results)
-    true_delay, false_delay = return_results(delay_results)
-    true_traceroute, false_traceroute = return_results(traceroute_results)
-
-    lat_percent = true_latency/len(latency_results)
-    ttl_percent = true_ttl/len(ttl_results)
-    delay_percent = true_delay/len(delay_results)
-    traceroute_percent = true_traceroute/len(traceroute_results)
-
-    if(lat_percent > .8 and ttl_percent > .8 and delay_percent > .8 and traceroute_percent > .9):
-        return True
-    else:
-        return False
 
 
 def test_data(trained_data_df):

@@ -20,22 +20,6 @@ ips = [
 ]
 
 # data = [parse_files(ip) for ip in ips]
-def train(data):
-    training_data_df = pd.DataFrame()
-    # for i in range(len(data)):
-    min_latency, max_latency = train_latency(data['Latency'])
-    min_ttl, max_ttl = train_ttl(data['TTL'])
-    min_delay, max_delay = train_delay(data['Delay'])
-    traceroutes = train_traceroute(data['Traceroute'])
-        # print(data['IP'])
-    train_df = pd.DataFrame({
-            'Min-Latency': min_latency, 'Max-Latency': max_latency,
-            'Min-ttl': min_ttl, 'Max-ttl': max_ttl, 'Min-delay': min_delay, 
-            'Max-delay': max_delay, 'Traceroutes': traceroutes
-        })
-    training_data_df = pd.concat([training_data_df, train_df], ignore_index=True)
-    # training_data_df.to_csv('./parsed_data/training_data.csv')
-    return training_data_df
 
 def train_data(data):
     training_data_df = pd.DataFrame()
@@ -80,7 +64,21 @@ def train_delay(delays):
 
 def train_traceroute(traceroute):
     traceroute_lst = []
-    for trace in traceroute:
-        if trace not in traceroute_lst:
-            traceroute_lst.append(trace)
+    for idx, name in enumerate(traceroute.value_counts().index.tolist()):
+        if traceroute.value_counts()[idx]/len(traceroute) > 0.4:
+            traceroute_lst.append(name)
+    # count = []
+    # total = 0
+    # for trace in traceroute:
+    #     if trace not in traceroute_lst:
+    #         traceroute_lst.append(trace)
+    #         count.append(1)
+    #         total += 1
+    #     else:
+    #         i = traceroute_lst.index(trace)
+    #         count[i] += 1
+    #         total += 1
+    # total = 0
+    # for i in count:
+    #     total += count
     return traceroute_lst
