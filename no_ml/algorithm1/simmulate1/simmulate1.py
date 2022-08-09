@@ -3,20 +3,18 @@ from test1 import test_trace
 import pandas as pd
 
 ips = [
-    ["75.174.31.107", "Boise, ID"],
-    ["136.36.62.167", "Provo, UT"],
-    ["174.52.180.239", "Sandy, UT?"],
-
     ["66.219.235.31","Provo, UT"],
     ["66.219.235.215", "Provo, UT"],
     ["66.219.236.117", "Provo, UT"],
     ["69.73.60.141", "Alabama?"],
     ["72.160.10.9", "Kalispell, MT"],
+    ["75.174.31.107", "Boise, ID"],
     ["76.8.213.221", "Provo, UT"],
     ["76.8.213.231", "Provo, UT"],
     ["97.117.140.93", "Salt Lake City, UT"],
-
+    ["136.36.62.167", "Provo, UT"],
     ["136.36.203.65", "Provo, UT"],
+    ["174.52.180.239", "Sandy, UT?"],
     ["byu.edu", "Provo, UT"],
 ]
 
