@@ -24,13 +24,16 @@ def test_traceroute(traceroute_test_data, common_traceroutes):
                 for ip in trace:
                     #if there are 3 ips in the trained traceroute, the testing traceroute passes
                     if ip in trained_trace:
-                        score += 3
+                        score += 1
                 if score >= 2:
                     passed = True
                     break
+                # elif trace[3] == trained_trace[3] and trace[4] == trained_trace[4]:
+                #     passed = True
+                #     break
                 else:
                     passed = False
-                        
+    
         traceroute_results.append(passed)
     return traceroute_results
 
@@ -58,7 +61,7 @@ def test_traceroute_verbose(traceroute_test_data, common_traceroutes):
                     if ip in trained_trace:
                         score += 1
                 # print(score)
-                if score >= 1:
+                if score >= 3:
                     passed = True
                     break
                 else:
@@ -94,7 +97,7 @@ def moved(traceroute_results):
     true_traceroute = return_true_percentage(traceroute_results)
     # print(traceroute_results)
     # print(true_traceroute)
-    if true_traceroute >= 1:
+    if true_traceroute >= 0.9:
         return False
     else: 
         return True

@@ -1,5 +1,5 @@
-from train import train
-from test_traceroute import test_trace, test_trace_verbose
+from train1 import train
+from test1 import test_trace
 import pandas as pd
 
 ips = [
@@ -23,13 +23,13 @@ ips = [
 #read data from each of the parsed csv files
 data = []
 for ip in ips:
-    data.append(pd.read_csv('../parsed_data_2/' + ip[0] + '.csv'))
+    data.append(pd.read_csv('../parsed_data1/' + ip[0] + '.csv'))
 
 #function runs the simmulation
 def simmulate():
     for i in range(len(data)):
         #open file and write information about the "starting ip" address
-        file = open('../simmulated_outcomes/' + ips[i][0], 'w')
+        file = open('../simmulated_data1/' + ips[i][0], 'w')
         file.write('Information for ' + ips[i][0] + ' Located in: ' + ips[i][1])
         file.write('\n\n')
 
@@ -51,6 +51,7 @@ def simmulate():
                 result_df = pd.DataFrame()
                 run_all_tests(total_data, starting_ip, moved_ip, file, result_df)
 
+
 def run_all_tests(total_data, starting_ip, moving_ip, file, result_df):
     #check that dataframe is greater then 200
     if(len(total_data) < 200):
@@ -58,6 +59,7 @@ def run_all_tests(total_data, starting_ip, moving_ip, file, result_df):
         file.write('Move was not detected...\n\n')
         print_results(result_df, file)
         return
+
     #set the first 100 data points as training data and test the next 100 data points
     train_data = total_data[0:100]
     test_data = total_data[100:200]
@@ -69,11 +71,9 @@ def run_all_tests(total_data, starting_ip, moving_ip, file, result_df):
 
     #if an ip address in the test_data exists that is not the starting ip address
     # the device has moved
-    # print(starting_ip[0])
     for idx, ip in enumerate(test_data['IP'].value_counts().index.tolist()):
         count = test_data['IP'].value_counts()[idx]
         if ip != starting_ip[0]:
-            # print(ip)
             if count/len(test_data) > 0.1:
                 has_moved = True
 
@@ -85,7 +85,6 @@ def run_all_tests(total_data, starting_ip, moving_ip, file, result_df):
         if predicted_move != has_moved:
             file.write("The test predicted a False Move\n\n")
             result = pd.DataFrame({'Moved IP': [moving_ip[0]], 'Result': ['False Postitve']})
-            # test_trace_verbose(trained_df, test_data)
         else:
             file.write('The test predicted a True Move!\n\n')
             result = pd.DataFrame({'Moved IP': [moving_ip[0]], 'Result': ['True Postitve']})
@@ -97,7 +96,6 @@ def run_all_tests(total_data, starting_ip, moving_ip, file, result_df):
     else:
         if has_moved:
             result = pd.DataFrame({'Moved IP': [moving_ip[0]], 'Result': ['False Negative']})
-            # test_trace_verbose(trained_df, test_data)
         else:
             result = pd.DataFrame({'Moved IP': [moving_ip[0]], 'Result': ['True Negative']})
         result_df = pd.concat([result_df, result], ignore_index=True)
