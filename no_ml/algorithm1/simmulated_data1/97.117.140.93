@@ -1,36 +1,6 @@
 Information for 97.117.140.93 Located in: Salt Lake City, UT
 
 --------------------------------------------------------
-Moving to: 75.174.31.107 Located in Boise, ID
-Move was not detected...
-
----RESULTS---
-False Negative: 152
-
-True Negative: 74
-
---------------------------------------------------------
-Moving to: 136.36.62.167 Located in Provo, UT
-The Sensor has moved from Salt Lake City, UT to Provo, UT
-The test predicted a True Move!
-
----RESULTS---
-True Negative: 74
-
-False Negative: 32
-
-True Postitve: 1
-
---------------------------------------------------------
-Moving to: 174.52.180.239 Located in Sandy, UT?
-Move was not detected...
-
----RESULTS---
-False Negative: 85
-
-True Negative: 74
-
---------------------------------------------------------
 Moving to: 66.219.235.31 Located in Provo, UT
 Move was not detected...
 
@@ -76,6 +46,15 @@ False Negative: 122
 True Negative: 74
 
 --------------------------------------------------------
+Moving to: 75.174.31.107 Located in Boise, ID
+Move was not detected...
+
+---RESULTS---
+False Negative: 152
+
+True Negative: 74
+
+--------------------------------------------------------
 Moving to: 76.8.213.221 Located in Provo, UT
 Move was not detected...
 
@@ -94,7 +73,28 @@ False Negative: 85
 True Negative: 74
 
 --------------------------------------------------------
+Moving to: 136.36.62.167 Located in Provo, UT
+The Sensor has moved from Salt Lake City, UT to Provo, UT
+The test predicted a True Move!
+
+---RESULTS---
+True Negative: 74
+
+False Negative: 32
+
+True Postitve: 1
+
+--------------------------------------------------------
 Moving to: 136.36.203.65 Located in Provo, UT
+Move was not detected...
+
+---RESULTS---
+False Negative: 85
+
+True Negative: 74
+
+--------------------------------------------------------
+Moving to: 174.52.180.239 Located in Sandy, UT?
 Move was not detected...
 
 ---RESULTS---

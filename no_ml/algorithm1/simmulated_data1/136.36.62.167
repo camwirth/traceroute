@@ -1,26 +1,6 @@
 Information for 136.36.62.167 Located in: Provo, UT
 
 --------------------------------------------------------
-Moving to: 75.174.31.107 Located in Boise, ID
-The Sensor has moved from Provo, UT to Boise, ID
-The test predicted a False Move
-
----RESULTS---
-True Negative: 28
-
-False Postitve: 1
-
---------------------------------------------------------
-Moving to: 174.52.180.239 Located in Sandy, UT?
-The Sensor has moved from Provo, UT to Sandy, UT?
-The test predicted a False Move
-
----RESULTS---
-True Negative: 28
-
-False Postitve: 1
-
---------------------------------------------------------
 Moving to: 66.219.235.31 Located in Provo, UT
 The Sensor has moved from Provo, UT to Provo, UT
 The test predicted a False Move
@@ -71,6 +51,16 @@ True Negative: 28
 False Postitve: 1
 
 --------------------------------------------------------
+Moving to: 75.174.31.107 Located in Boise, ID
+The Sensor has moved from Provo, UT to Boise, ID
+The test predicted a False Move
+
+---RESULTS---
+True Negative: 28
+
+False Postitve: 1
+
+--------------------------------------------------------
 Moving to: 76.8.213.221 Located in Provo, UT
 The Sensor has moved from Provo, UT to Provo, UT
 The test predicted a False Move
@@ -103,6 +93,16 @@ False Postitve: 1
 --------------------------------------------------------
 Moving to: 136.36.203.65 Located in Provo, UT
 The Sensor has moved from Provo, UT to Provo, UT
+The test predicted a False Move
+
+---RESULTS---
+True Negative: 28
+
+False Postitve: 1
+
+--------------------------------------------------------
+Moving to: 174.52.180.239 Located in Sandy, UT?
+The Sensor has moved from Provo, UT to Sandy, UT?
 The test predicted a False Move
 
 ---RESULTS---
