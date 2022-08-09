@@ -1,0 +1,60 @@
+This document explains the reasoning behind the thrid traceroute algorithm...
+
+Parsing the traceroute data:
+- The last 3 ip addresses (ignoring last byte of data) are recorded.
+- latency, time to live, and delay are ignored (for now...)
+
+Training of traceroute data:
+- Includes all traceroutes that appear in the Training dataset. This 
+    algorithm does not protect against outliers in the hope that it could
+    catch a move before a false traceroute ever appears in the training set
+
+Testing of traceroute data:
+- Each traceroute in testing set is tested against the training set. If there are
+    two or more ip addresses in both trained and test traceroute, the test traceroute
+    passes. If 10% or more of the traceroutes do not pass, the device is predicted to 
+    have moved.
+
+Simmulating the move:
+- As in all other algorithms, the same simmulation method is used. There are two data
+    sets that are collected from parsed data for each test. One IP address will be 
+    determined to be the "starting" ip address and the other is determined as the 
+    "moved" ip address. The two datasets are concatenated together - in propper order - 
+    so the data can simmulate the move in time. 
+- The simmulation takes the first 200 data points from the total data that is concatenated 
+    together. The first 100 of this data set is determined to be the training set, and the
+    second half is determined as the test set. The test is run for these data sets and the
+    result, predicted_move, is recoreded. 
+- Each time a result is recoreded, the simmulation then checks the data being tested
+    to check if the result was accurate or not. If over 10% of the ip addresses in the 
+    test set of data are different from the determined "starting" ip address, has_moved
+    is set to True, otherwise it is set to False. In this way the prediction done by the
+    test can be tested against the true outcome. 
+- Once the data set of the first 200 has been trained and tested and information has been 
+    recorded, the first 50 data points is deleted and the simmulation is run recursively 
+    again. This time with 50 less data points so the data simmulates the 'moving window'
+    - The number for this can vary, the more frequent the more accurate the tests will be 
+        I believe. This protects against the outliers included in the training data as a 
+        move should theoretically be caught before the false traceroute data could ever
+        be included in the training data. 
+- For each test in the simmulation, the True Positives (device has moved), False Positives
+    (device has not moved but was suspected to have), True Negatives (device has not moved),
+    and False Negatives (device has moved but was not detected) are recorded. 
+- Each ip address is determined to be the "starting" ip address and is tested against all
+    other data that we currently have. The results are written in the corresponding file 
+    to the ip address name. 
+
+Notes:
+- This algorithm correctly predicts a move with all ip addresses that are not in the 
+    same geographical location for the data that has been collected thusfar. 
+- I have noticed with the other algorithms that there are frequent similarities in the
+    first two ip addresses in the the set of the last 5 hops of the traceroute between 
+    the router in Salt Lake City and other routers that are out of state. I am unsure
+    why this would be, but I think it is harder for the other 2 algorithms to determine
+    if a router has moved due to the fact that 5 ip address is too far out.. From the 
+    patterns that I have noticed, the similarities occur most often with the last two 
+    or three ip addressing. This algorithm can recongize those patterns with both 
+    shifts and changes in the last 3 ip addresses.
+- I think that this works the best because it would make sense that there are
+    significantly less router options for the last few hops as the routers get nearer
+    to the desired destination. 

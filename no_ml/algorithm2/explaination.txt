@@ -19,4 +19,5 @@ Testing of traceroute data:
 Notes:
 - From what I have seen this protects against everything. I am getting 100% accurate
     data as long as the two ip addresses are not in a similar geographical location
-- I am struggling to see why this would be though.. 
+- I am struggling to see why this would be though... how does it relate to what we 
+    know about traceroute? How can we explain this algorithm intuitively?
