@@ -1,0 +1,31 @@
+This document explains the reasoning behind the second traceroute algorithm...
+
+Parsing the traceroute data:
+- The last 3 ip addresses (ignoring last byte of data) are recorded.
+- latency, time to live, and delay are ignored (for now...)
+
+Training of traceroute data:
+- Includes all traceroutes that appear in the Training dataset. This 
+    algorithm does not protect against outliers in the hope that it could
+    catch a move before a false traceroute ever appears in the training set
+
+Testing of traceroute data:
+- Each traceroute in testing set is tested against the training set. If there are
+    two or more ip addresses in both trained and test traceroute, the test traceroute
+    passes. If 10% or more of the traceroutes do not pass, the device is predicted to 
+    have moved.
+
+Notes:
+- This algorithm correctly predicts a move with all ip addresses that are not in the 
+    same geographical location for the data that has been collected thusfar. 
+- I have noticed with the other algorithms that there are frequent similarities in the
+    first two ip addresses in the the set of the last 5 hops of the traceroute between 
+    the router in Salt Lake City and other routers that are out of state. I am unsure
+    why this would be, but I think it is harder for the other 2 algorithms to determine
+    if a router has moved due to the fact that 5 ip address is too far out.. From the 
+    patterns that I have noticed, the similarities occur most often with the last two 
+    or three ip addressing. This algorithm can recongize those patterns with both 
+    shifts and changes in the last 3 ip addresses.
+- I think that this works the best because it would make sense that there are
+    significantly less router options for the last few hops as the routers get nearer
+    to the desired destination. 

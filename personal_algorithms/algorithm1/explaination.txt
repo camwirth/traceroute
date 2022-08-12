@@ -1,0 +1,23 @@
+This document explains the reasoning behind the first traceroute algorithm...
+
+Parsing the traceroute data:
+- The traceroute data is parsed exactly as it is in the first traceroute algorithm
+- the last 5 ip addresses are recoreded, ignoring the last byte of data
+
+Training of traceroute data:
+- Every occurance of a new traceroute is included in the training dataset.
+    This algorithm does not protect against outliers in trained set of traceroutes,
+    however the hope would be that it can catch a move before enough data would 
+    be collected to have a false ip address be included in the training set
+
+Testing of traceroute data:
+- Each traceroute is tested against the training set. If there are two or more ip
+    addresses in the test traceroue in a single one of the trained traceroutes, the 
+    test passes. 90% of the traceroutes must have passed for it to be determined 
+    that the device has not moved.
+
+Notes:
+- From what I have seen this protects against everything. I am getting 100% accurate
+    data as long as the two ip addresses are not in a similar geographical location
+- I am struggling to see why this would be though... how does it relate to what we 
+    know about traceroute? How can we explain this algorithm intuitively?
